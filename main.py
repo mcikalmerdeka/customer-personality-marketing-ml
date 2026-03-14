@@ -56,7 +56,7 @@ with st.expander("**Read Instructions First: About This App**"):
             - Ensure your dataset matches the source data structure
         2. Use Source Data Directly
             - Select 'Use Source Data Directly' option
-            - Automatically loads data from Google Drive
+            - Automatically loads data from the local data folder
 
     ### 🔧 Preprocessing Workflow
     The application follows a comprehensive data preprocessing pipeline:
@@ -178,14 +178,10 @@ if input_type == 'File Upload Local':
 else:
     st.write("You can use the source data directly by selecting the 'Use Source Data Directly' option.")
     try:
-        # # Link to the file (using gdrive link)
-        # file_url = "https://drive.google.com/uc?id=17JjPC-T_QSACwG29or48HpeJATbCPaDg"
-
-        # Link to the file (using github link)
-        file_url = "https://raw.githubusercontent.com/mcikalmerdeka/Predict-Customer-Personality-to-Boost-Marketing-Campaign-by-Using-Machine-Learning/main/marketing_campaign_data.csv"
-
-        # Load the CSV into a DataFrame
-        file_data = pd.read_csv(file_url, index_col=0)
+        # Load the CSV from local data folder
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        data_path = os.path.join(script_dir, 'data', 'marketing_campaign_data.csv')
+        file_data = pd.read_csv(data_path, index_col=0)
 
         st.subheader("Raw Data Preview")
         st.write(file_data.head())
