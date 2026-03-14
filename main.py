@@ -11,7 +11,7 @@ warnings.filterwarnings('ignore')
 import os
 
 # Import all preprocessing functions
-from preprocessing import (
+from utils.preprocessing import (
     check_data_information,
     change_data_type,
     handle_missing_values,
@@ -22,8 +22,8 @@ from preprocessing import (
     feature_scaling
 )
 
-from cluster_interpretations import get_cluster_interpretations
-from feature_definitions import get_feature_definitions
+from utils.cluster_interpretations import get_cluster_interpretations
+from utils.feature_definitions import get_feature_definitions
 
 # Page config
 st.set_page_config(page_title="Customer Segmentation App", layout="wide")
@@ -107,8 +107,8 @@ with st.expander("**Read Instructions First: About This App**"):
 def load_model():
     # Get the current script directory
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    # Go up one level to project root and into models folder
-    model_path = os.path.join(script_dir, '..', 'models', 'kmeans_model.joblib')
+    # Load model from models folder
+    model_path = os.path.join(script_dir, 'models', 'kmeans_model.joblib')
     return joblib.load(model_path)
 
 model = load_model()
