@@ -1,49 +1,143 @@
-# Predict Customer Personality to Boost Marketing Campaign by Using Machine Learning
+# Customer Personality Marketing ML
 
-![Project Header](https://raw.githubusercontent.com/mcikalmerdeka/Predict-Customer-Personality-to-Boost-Marketing-Campaign-by-Using-Machine-Learning/refs/heads/main/Assets/Project%20Header.jpg)
+![Project Header](assets/Project%20Header.jpg)
 
-This project originally came from an assignment after a data science bootcamp program that I attended. Which is why you can see there are several folders of **`tasks`** that contain instructions about business questions that must be answered based on data and my presentation of them. I then developed the project further by adding new knowledge that I learned from work experience, online courses, and other sources.
+A machine learning solution for customer segmentation and personality analysis to boost marketing campaign effectiveness.
 
-- The `analysis` folder contains the main ipynb files that i used for the EDA, data preprocessing, train and save ML model, and answering business questions and formulating recommendations.
-- The `data` folder contains raw and processed data used in the project.
-- The `models` folder contains joblib files of trained model.
-- The `scripts` folder contains the scripts necessary to run the streamlit application.
+## Project Overview
 
-## 📌 Project Overview:
+End-to-end data science project that analyzes customer demographics, spending behavior, and engagement metrics to identify distinct customer segments. Includes comprehensive EDA, preprocessing pipelines, K-means clustering, and an interactive Streamlit dashboard for segment prediction and business recommendations.
 
-This project aims to enhance marketing campaign effectiveness through customer segmentation and personality analysis. By analyzing customer data including demographics, spending behavior, and engagement metrics, the company seek to develop targeted marketing strategies that improve campaign performance and customer satisfaction. Our task here as a data analyst work with cross-functional teams of marketing and sales department, where the Marketing team will use your segmentation to optimize campaigns and customer communication, while the Sales team can leverage your insights to personalize their approach to different customer types.
+## Key Results
 
-## 📌 Problem Definitions:
+- **Customer Segments**: 4 distinct clusters identified
+- **Model Algorithm**: K-means Clustering with PCA (85% variance retention)
+- **Cluster Distribution**:
+  - Low-Engagement Customers: 27.78%
+  - Mid-Tier Active Customers: 27.19%
+  - Premium Engaged Customers: 28.37%
+  - High-Browse Low-Convert: 16.66%
+- **Campaign Optimization**: Tailored recommendations for each segment to improve response rates
 
-1. Customer Segmentation: How can we group customers into meaningful segments based on their characteristics and behaviors?
+## Project Structure
 
-2. Campaign Optimization: How can we tailor marketing campaigns to different customer segments to improve response rates and conversion?
-
-## 📌 Assumptions & Scope Limitations (based on extracted/provided dataset):
-
-1. The data provided is accurate and representative of the customer base.
-
-2. Past behavior (purchases, website visits, campaign responses) is indicative of future behavior.
-
-3. Demographic factors (age, education, marital status) influence purchasing decisions.
-
-4. Customer complaints within the last 2 years significantly impact their relationship with the company.
-
-5. The recency of a customer's last purchase is related to their likelihood of future purchases.
-
-6. Customers who engage more frequently (website visits, purchases) are more valuable to the company.
-
-## 📌The streamlit app from this project that can be tried with these commands:
-
-- Clone repo
-```python
-git clone https://github.com/mcikalmerdeka/Predict-Customer-Personality-to-Boost-Marketing-Campaign-by-Using-Machine-Learning.git
+```
+├── assets/                 # Project images and media
+├── data/                   # Raw and processed datasets
+│   ├── marketing_campaign_data.csv
+│   ├── pca_input_kmeans.csv
+│   └── cluster_summary_statistics.xlsx
+├── models/                 # Trained model artifacts
+│   ├── kmeans_model.joblib
+│   └── scalers.joblib
+├── tasks/                  # Original bootcamp assignment materials
+│   ├── Task 1 - EDA/
+│   ├── Task 2 - Data Cleaning & Preprocessing/
+│   └── Task 3 - Data Modeling/
+├── utils/                  # Reusable preprocessing and ML functions
+│   ├── preprocessing.py
+│   ├── feature_definitions.py
+│   └── cluster_interpretations.py
+├── main.py                 # Streamlit application
+├── notebook.ipynb          # EDA and model training notebook
+├── pyproject.toml          # Project dependencies (uv/pip)
+├── requirements.txt        # Pip-compatible dependencies
+└── README.md              # Project documentation
 ```
 
-- Navigate to streamlit file
-```python
-cd scripts
-streamlit run app.py
+## Quick Start
+
+### Prerequisites
+
+- Python 3.12+
+- uv (recommended) or pip
+
+### Installation
+
+```bash
+# Clone repository
+git clone https://github.com/mcikalmerdeka/customer-personality-marketing-ml.git
+cd customer-personality-marketing-ml
+
+# Create virtual environment
+python -m venv .venv
+
+# Activate virtual environment
+# On Windows:
+.venv\Scripts\activate
+# On macOS/Linux:
+source .venv/bin/activate
+
+# Install dependencies (using pip)
+pip install -r requirements.txt
+
+# Or using uv (faster alternative)
+uv sync
 ```
 
-Just follow the instructions inside the streamlit app and try it out.
+### Run the App
+
+```bash
+streamlit run main.py
+```
+
+Access the app at `http://localhost:8501`
+
+## Features
+
+- **Data Input Options**: Upload custom CSV or use built-in source data
+- **Interactive Preprocessing**: Step-by-step data cleaning with customizable parameters
+  - Data type conversion
+  - Missing value imputation
+  - Outlier handling
+  - Feature engineering
+  - Categorical encoding
+  - Feature scaling
+- **PCA Visualization**: 2D cluster visualization using Principal Component Analysis
+- **Cluster Statistics**: Detailed segment analysis with key metrics
+- **Business Recommendations**: Tailored strategies for each customer segment
+- **New Customer Prediction**: Predict segment membership for new customer data
+- **Data Dictionary**: Comprehensive feature explanations and definitions
+
+## Technical Stack
+
+- Python 3.12+
+- scikit-learn (K-means clustering, PCA, preprocessing)
+- pandas, numpy (data processing)
+- matplotlib, seaborn (visualization)
+- Streamlit (web application)
+- joblib (model serialization)
+- uv (dependency management)
+
+## Business Problem
+
+A product-selling company needed to improve marketing campaign effectiveness and develop targeted strategies for different customer types. The solution segments customers based on demographics, purchasing behavior, and campaign responsiveness, enabling the Marketing team to optimize campaigns and the Sales team to personalize their approach.
+
+### Problem Statements
+
+1. **Customer Segmentation**: How can we group customers into meaningful segments based on their characteristics and behaviors?
+2. **Campaign Optimization**: How can we tailor marketing campaigns to different customer segments to improve response rates and conversion?
+
+### Assumptions & Scope
+
+- The data provided is accurate and representative of the customer base
+- Past behavior (purchases, website visits, campaign responses) is indicative of future behavior
+- Demographic factors (age, education, marital status) influence purchasing decisions
+- Customer complaints within the last 2 years significantly impact their relationship with the company
+- The recency of a customer's last purchase is related to their likelihood of future purchases
+- Customers who engage more frequently (website visits, purchases) are more valuable to the company
+
+## Try the Live App
+
+[Streamlit Cloud Deployment](https://customer-personality-marketing-ml-wxgaitu6nq6qdb94c8xzdq.streamlit.app/)
+
+## Project Background
+
+This project originally came from an assignment after a data science bootcamp program. The **`tasks`** folder contains the original assignment instructions, presentations, and deliverables. The project has been further developed with additional knowledge from work experience, online courses, and best practices in MLOps and software engineering.
+
+## Author
+
+**Muhammad Cikal Merdeka** | Data Analyst/Data Scientist
+
+- [GitHub](https://github.com/mcikalmerdeka)
+- [LinkedIn](https://www.linkedin.com/in/mcikalmerdeka)
